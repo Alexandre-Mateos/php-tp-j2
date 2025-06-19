@@ -2,7 +2,7 @@
 $dataHarryPotter = file_get_contents('https://hp-api.onrender.com/api/characters');
 $arrayHarryPotter = json_decode($dataHarryPotter, true);
 
-var_dump($arrayHarryPotter);
+//var_dump($arrayHarryPotter);
 ?>
 
 <!doctype html>
@@ -25,12 +25,25 @@ var_dump($arrayHarryPotter);
                       <div class="card h-100" style="width: 18rem;">
                           <img src="<?= $item['image'] ?>" class="card-img-top img-thumbnail object-fit-cover h-75"
                                alt="photo d'un des personnages de harry potter">
-                            <?php if(!$item['alive']) : ?>
-                            <img src="/images/mort.png" class="position-absolute top-0 end-0 w-25">
+                            <?php if (!$item['alive']) : ?>
+                                <img src="/images/mort.png" class="position-absolute top-0 end-0 w-25">
                             <?php endif; ?>
                           <div class="card-body">
                               <h5 class="card-title"> <?= $item['name'] ?></h5>
-                              <p class="card-text">Maison : <?= $item['house'] ?></p>
+                              <div class="d-flex align-items-center">
+                                  <p class="card-text">Maison : <?= $item['house'] ?></p>
+
+                                    <?php if ($item['house'] === 'Gryffindor') : ?>
+                                        <img src="<?php echo('/images/gryffindor.png') ?>" class="w-25">
+                                    <?php elseif ($item['house'] === 'Slytherin') : ?>
+                                        <img src="<?php echo('/images/slytherin.png') ?>" class="w-25">
+                                    <?php elseif ($item['house'] === 'Hufflepuff') : ?>
+                                        <img src="<?php echo('/images/poufsouffle.png') ?>" class="w-25">
+                                    <?php elseif ($item['house'] === 'Ravenclaw') : ?>
+                                        <img src="<?php echo('/images/serdaigle.png') ?>" class="w-25">
+                                    <?php endif ?>
+                              </div>
+
                               <p class="card-text">Date de naissance : <?= $item['dateOfBirth'] ?></p>
                           </div>
                       </div>
