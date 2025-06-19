@@ -21,10 +21,12 @@ $arrayHarryPotter = json_decode($dataHarryPotter, true);
     <div class="row">
           <?php foreach ($arrayHarryPotter as $item) : ?>
                 <?php if (strlen($item['image']) > 0) : ?>
-                  <div class="col-md-4">
-                      <div class="card" style="width: 18rem;">
-                          <img src="<?= $item['image'] ?>" class="card-img-top"
+                  <div class="col-md-4 p-2">
+                      <div class="card h-100" style="width: 18rem;">
+
+                          <img src="<?= $item['image'] ?>" class="card-img-top img-thumbnail object-fit-cover h-75"
                                alt="photo d'un des personnages de harry potter">
+
                           <div class="card-body">
                               <h5 class="card-title"> <?= $item['name'] ?></h5>
                               <p class="card-text">Maison : <?= $item['house'] ?></p>
