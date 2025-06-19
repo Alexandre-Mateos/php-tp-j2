@@ -2,7 +2,7 @@
 $dataHarryPotter = file_get_contents('https://hp-api.onrender.com/api/characters');
 $arrayHarryPotter = json_decode($dataHarryPotter, true);
 
-//var_dump($arrayHarryPotter);
+var_dump($arrayHarryPotter);
 ?>
 
 <!doctype html>
@@ -23,10 +23,11 @@ $arrayHarryPotter = json_decode($dataHarryPotter, true);
                 <?php if (strlen($item['image']) > 0) : ?>
                   <div class="col-md-4 p-2">
                       <div class="card h-100" style="width: 18rem;">
-
                           <img src="<?= $item['image'] ?>" class="card-img-top img-thumbnail object-fit-cover h-75"
                                alt="photo d'un des personnages de harry potter">
-
+                            <?php if(!$item['alive']) : ?>
+                            <img src="/images/mort.png" class="position-absolute top-0 end-0 w-25">
+                            <?php endif; ?>
                           <div class="card-body">
                               <h5 class="card-title"> <?= $item['name'] ?></h5>
                               <p class="card-text">Maison : <?= $item['house'] ?></p>
